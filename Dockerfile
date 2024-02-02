@@ -5,7 +5,7 @@ COPY src src
 RUN mvn clean package
 
 FROM openjdk:17-jdk-alpine
-ARG JAR_FILE=./target/*.jar
+ARG JAR_FILE=/workspace/app/target/*.jar
 COPY --from=build ${JAR_FILE} app.jar
 ENTRYPOINT ["java","-jar","/app.jar"]
 EXPOSE 8080
